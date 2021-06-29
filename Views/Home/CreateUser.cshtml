@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebApplication2.Models.IUserModel>
+@{
+    ViewBag.Title = "User List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@Html.Partial("UserListView", Model)
+@{Html.RenderAction("AddUser");}
