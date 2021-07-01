@@ -11,7 +11,7 @@ namespace WebApplication2.Models
         [DisplayName("User Name")]
         
         
-        [MinLength(6)]
+        [MinLength(6,ErrorMessage ="Minimul lenght for User Name is 6.")]
         [Required(ErrorMessage = "Please Give User Name")]
         public string UserName { get; set; }
         [DisplayName("Display Name")]
