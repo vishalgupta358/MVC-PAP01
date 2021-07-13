@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WebApplication2.Models;
 
 namespace WebApplication2.Repository.Interface
 {
     interface IUser
     {
-        bool CreateUser(IUserModel userModel);
-        bool UpdateUser(IUserModel userModel);
+        bool CreateUser(UserModel userModel);
+        bool UpdateUser(UserModel userModel);
 
-        IUserModel GetUser(int UserId);
-        List<IUserModel> GetUsers();
+        UserModel GetUser(int UserId);
+        List<UserModel> GetUsers();
 
         bool DeleteUser(int UserId);
 

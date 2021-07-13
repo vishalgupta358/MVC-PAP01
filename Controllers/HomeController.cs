@@ -10,23 +10,31 @@ namespace WebApplication2.Controllers
     {
         private IUser _user = Factory.GetUserInstance();
         public ActionResult CreateUser()
-        {           
+        {
             return View(_user.GetUsers());
         }
 
         [HttpPost]
-        public ActionResult CreateUser(UserModel model)
+
+        public  ActionResult CreateUser(UserModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)                
             {
-                _user.CreateUser(model);
+
+                if (!_user.CreateUser(model))
+                {
+
+
+                    return RedirectToAction("Error");
+                }
             }
-            return RedirectToAction("CreateUser");
+           return RedirectToAction("CreateUser");
+
         }
 
         [HttpGet]
         public PartialViewResult Edit(int userId)
-        {            
+        {
             return PartialView("EditUser", _user.GetUser(userId));
         }
         [HttpPost]
@@ -54,6 +62,6 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        
+
     }
 }

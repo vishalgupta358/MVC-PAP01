@@ -4,8 +4,9 @@ namespace WebApplication2.Repository
 {
     public static class Factory
     {
-        public static User GetUserInstance() {
-            return new User();
+        public static UserAPI GetUserInstance()
+        {
+            return new UserAPI();
         }
     }
 }

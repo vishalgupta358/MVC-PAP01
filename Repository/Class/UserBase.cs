@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using WebApplication2.Models;
 using WebApplication2.Repository.Interface;
 
 namespace WebApplication2.Repository.Class
 {
-    public  class User:IUser
+    public class User : IUser
     {
-            static List<IUserModel> _userModel = new List<IUserModel> {
+        static List<UserModel> _userModel = new List<UserModel> {
             new UserModel
             {
                 UserId=1,
@@ -34,8 +38,11 @@ namespace WebApplication2.Repository.Class
 
             }
         };
-        public bool CreateUser(IUserModel userModel)
+        public bool CreateUser(UserModel userModel)
         {
+
+
+            
             try
             {
                 userModel.UserId = _userModel.Count + 1;
@@ -63,17 +70,17 @@ namespace WebApplication2.Repository.Class
             return true;
         }
 
-        public IUserModel GetUser(int UserId)
+        public UserModel GetUser(int UserId)
         {
-            return (IUserModel)_userModel.Where(x => x.UserId == UserId);
+            return (UserModel)_userModel.Where(x => x.UserId == UserId);
         }
 
-        public List<IUserModel> GetUsers()
-        {
+        public List<UserModel> GetUsers()
+        {            
             return _userModel;
         }
 
-        public bool UpdateUser(IUserModel userModel)
+        public bool UpdateUser(UserModel userModel)
         {
             try
             {
@@ -86,7 +93,6 @@ namespace WebApplication2.Repository.Class
             }
             return true;
         }
-
-      
     }
+    
 }
